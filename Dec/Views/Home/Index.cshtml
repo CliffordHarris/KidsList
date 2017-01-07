@@ -1,0 +1,134 @@
+﻿@section SPAViews {
+    @Html.Partial("_Home")
+}
+@section Scripts{
+    <script src="~/Angular/ChoresController.js"></script>
+    <script src="~/Services/ChoresService.js"></script>
+}
+<div ng-app="chores" ng-controller="choresController" ng-cloak id="main">
+    <div class="jumbotron">
+        <h1 class="text-center">Hi {{firstName}}!!</h1>
+    </div>
+    <div id="daysTravelInput" ng-class="{ 'cool-effect' :hasNumberOfDays }"> 
+         <ul></ul>
+        <button ng-click="checkForNumberOfDays()">Go Back</button>
+    </div>
+    <div class="text-center">
+        @*<p>This section shows what to pack when traveling</p>*@
+        <div class="top-row" ng-class="{ 'cool-effect' :hasNumberOfDays }">
+            <div>
+                <h3>Press a button below</h3>
+                <div class="center-block col-md-6 col-sm-6">
+                    @*<button type="button" class="btn btn-primary btn-lg big-button green" data-toggle="modal" data-target="#myModal">Travel</button>*@
+                    <button type="button" class="btn btn-primary btn-lg big-button green" ng-click="checkForNumberOfDays()">Travelers</button>
+                </div>
+                <div class="center-block col-md-6 col-sm-6">
+                    <button type="button" class="btn btn-primary btn-lg big-button red" data-toggle="modal" data-target="#myModal1">Chores</button>
+                </div>
+            <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+            <!-- Modal content-->
+                        <div class="modal-content text-left">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Things to pack when traveling</h4>
+                            </div>
+                            <div class="modal-body row center-block">
+                                <div ng-controller="choresController">
+                                    @*Khou and I are on our own*@
+                                    @*<p ng-click="getItems('Dan')" ng-class="{'yelling': isDan}">{{names[0]}}<div ng-show="isDan" ng-repeat="(key, value) in things">{{number}} {{key}}s </div></p>*@
+
+                                        @*<span >- </span>*@
+
+                                    <div class="middle">
+                                        <span class="dead-center" ng-click="getItems('Alex')" ng-class="{'yelling': isAlex}">Alex</span>
+                                        <span class="dead-center" ng-click="getItems('Iz')" ng-class="{'yelling': isIz}">Isabel</span>
+                                        <span class="dead-center" ng-click="getItems('Nat')" ng-class="{'yelling': isNat}">Nat</span>
+                                        <span class="dead-center" ng-click="getItems('Bubs')" ng-class="{'yelling': isBubs}">Bubs</span>
+                                    </div>
+                                    <div class="little-left">
+                                        <div ng-show="isAlex" ng-repeat="(key, value) in mainList" class="alex-font" ng-style="alexStyle">
+                                            <span class="dead-center">{{value}}</span>
+                                            <span class="dead-center">{{key}}</span>
+                                        </div>
+                                        <div ng-show="isIz" ng-repeat="(key, value) in mainList" class="iz-font" ng-style="izStyle">
+                                            <span class="dead-center">{{value}}</span>
+                                            <span class="dead-center">{{key}}</span>
+                                        </div>
+                                        <div ng-show="isNat" ng-repeat="(key, value) in mainList" class="nat-font" ng-style="natStyle">
+                                            <span class="dead-center">{{value}}</span>
+                                            <span class="dead-center">{{key}}</span>
+                                        </div>
+                                        <div ng-show="isBubs" ng-repeat="(key, value) in mainList" class="bubs-font" ng-style="bubsStyle">
+                                            <span class="dead-center">{{value}}</span>
+                                            <span class="dead-center">{{key}}</span>
+                                        </div>
+                                    </div>
+        
+
+                                        @*<table class="col-md-3 center-block">
+                                            <tr ng-click="getItems('Alex')" ng-class="{'yelling': isAlex}">
+                                                <th>Alex</th>
+                                            </tr>
+                                            <tr ng-show="isAlex" ng-repeat="(key, value) in mainList">
+                                                <td>{{key}}</td>
+                                                <td>{{value}}</td>
+                                            </tr>
+                                        </table>
+                                        <table class="col-md-3">
+                                            <tr ng-click="getItems('Alex')" ng-class="{'yelling': isAlex}">
+                                                <th>Alex</th>
+                                            </tr>
+                                            <tr ng-show="isAlex" ng-repeat="(key, value) in mainList">
+                                                <td>{{key}}</td>
+                                                <td>{{value}}</td>
+                                            </tr>
+                                        </table>*@
+               
+                      
+
+                                    @*<span class="col-lg-3" ng-click="getItems('Iz')" ng-class="{'yelling': isIz}">Isabel
+                                        <span ng-show="isIz" ng-repeat="(key, value) in mainList">{{key}} - {{value}}</span>
+                                    </span>
+
+                                    <span class="col-lg-3" ng-click="getItems('Nat')" ng-class="{'yelling': isNat}">Nat
+                                        <span ng-show="isNat" ng-repeat="(key, value) in mainList">{{key}}</span>
+                                    </span>
+
+                                    <span class="col-lg-3" ng-click="getItems('Bubs')" ng-class="{'yelling': isBubs}">Bubs
+                                        <span ng-show="isBubs" ng-repeat="(key, value) in mainList">{{key}} - {{value}}</span>
+                                    </span>*@
+                                    @*alex and bubs still need to get set to true*@
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- Modal -->
+                <div class="modal fade" id="myModal1" role="dialog">
+                    <div class="modal-dialog">
+            <!-- Modal content-->
+                        <div class="modal-content text-left row">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">People in this house</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div ng-controller="choresController">
+                                    <p ng-click="getItems('nat')" ng-repeat="(key, value) in items | orderBy " value">{{key}} = {{value}}</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
